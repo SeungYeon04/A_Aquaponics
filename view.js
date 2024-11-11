@@ -45,6 +45,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     backBtn.addEventListener('click', () => {
-        window.location.href = 'index.html';
+        window.location.href = 'gesifan.html';
     });
 });

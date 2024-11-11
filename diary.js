@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const diaryRef = collection(db, 'diaries');
                 await addDoc(diaryRef, { email: loggedInUser.email, title, content, date: new Date() });
-                alert('일기가 저장되었습니다.');
-                window.location.href = 'index.html';
+                alert('글이 성공적으로 저장되었습니다.');
+                window.location.href = 'gesifan.html';
             } catch (error) {
                 console.error('Error saving diary:', error);
-                alert('일기 저장 중 오류가 발생했습니다.');
+                alert('글 저장 중 오류가 발생했습니다.');
             }
         });
     }
@@ -50,7 +50,7 @@ async function loadDiaries(email) {
                 <h3>${entry.title}</h3>
                 <p>${entry.content}</p>
                 <p>${new Date(entry.date.seconds * 1000).toLocaleString()}</p>
-                <button class="view-btn" data-id="${doc.id}">View</button>
+                <button class="view-btn" data-id="${doc.id}">크게보기</button>
             `;
             entryElement.querySelector('.view-btn').addEventListener('click', () => {
                 localStorage.setItem('currentEntryId', doc.id);
