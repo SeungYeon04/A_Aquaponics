@@ -15,11 +15,9 @@ body {
 }
 
 #diary-entries {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
 
-    margin-left: 0%; margin-right: 0%; 
+
+    margin-left: 4%; margin-right: 4%; 
     width: 100% center;   
     
 }
@@ -92,20 +90,20 @@ button:hover {
 }
 
 .view-btn {
-    background-color: green;
+    background-color: gray;
     color: black;
 }
 
 .view-btn:hover {
-    background-color: darkgreen;
+    background-color: gray;
 }
 
 .delete-btn {
-    background-color: red;
+    background-color: gray;
     color: black;
 }
 
 .delete-btn:hover {
-    background-color: darkred;
+    background-color: gray;
 }
 
