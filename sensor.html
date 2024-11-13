@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아쿠아포닉스</title>
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="firebase-config.js" type="module"></script>
+    
+</head>
+<body>
+    <div style="background-color: gray">
+        <div style="padding: 1%;">
+        <button onclick="location.href='index.html'">메인화면</button>
+        <button onclick="location.href='login.html'">로그인</button>
+        <button onclick="location.href='gesifan.html'">게시판</button>
+        <button onclick="location.href='shop.html'">상품보기</button> 
+        <button onclick="location.href='sensor.html'">센서값체크</button><br> 
+        </div>
+    </div>
+    <div>
+    <h2>센서 데이터 상태</h2>
+    <table border="1" id="sensorTable" style="margin: auto;">
+        <thead>
+        <tr><td>순서</td><td>날짜/시간</td><td>공기온도</td><td>공기습도</td><td>토양습도</td><td>수중온도</td><td>PH농도</td><td>용존산소량</td></tr>
+        </thead>
+        <tbody>
+            <!-- 데이터가 여기에 동적으로 로드됩니다 -->
+        </tbody>
+    </table>
+
+
+    <script type="module">
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { db } from './firebase-config.js';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const sensorDataRef = collection(db, 'SensorData');
+            const sensorTable = document.getElementById('sensorTable').getElementsByTagName('tbody')[0];
+
+            const querySnapshot = await getDocs(sensorDataRef);
+            let index = 1; // 데이터 순서 카운트
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const date = new Date(data.timestamp); // 데이터에 timestamp 필드가 있다고 가정
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${index++}</td><td>${date.toLocaleString()}</td><td>${data.airTemperature}</td><td>${data.airHumidity}</td><td>${data.soilMoisture}</td><td>${data.waterTemperature}</td><td>${data.phLevel}</td><td>${data.dissolvedOxygen}</td>`;
+                sensorTable.appendChild(row);
+            });
+        });
+    </script>
+
+</div>
+</body>
+</html>
