@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const diaryRef = collection(db, 'diaries');
-                await addDoc(diaryRef, { email: loggedInUser.email, title, content, date: new Date() });
+                await addDoc(diaryRef, { username: loggedInUser.username, title, content, date: new Date() });
                 alert('글이 성공적으로 저장되었습니다.');
                 window.location.href = 'gesifan.html';
             } catch (error) {
@@ -30,17 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    loadDiaries(loggedInUser.email);
+    loadDiaries(loggedInUser.username);
 });
 
-async function loadDiaries(email) {
+async function loadDiaries() {
     const entriesList = document.getElementById('entries-list');
     if (!entriesList) return;
 
     try {
         const diariesRef = collection(db, 'diaries');
-        const q = query(diariesRef, where('email', '==', email));
-        const querySnapshot = await getDocs(q);
+        const querySnapshot = await getDocs(diariesRef); // 조건 없는 getDocs 사용
 
         entriesList.innerHTML = '';
         querySnapshot.forEach((doc) => {
@@ -48,7 +47,7 @@ async function loadDiaries(email) {
             const entryElement = document.createElement('li');
             entryElement.innerHTML = `
                 <h3>${entry.title}</h3>
-                <p>${new Date(entry.date.seconds * 1000).toLocaleString()}</p>
+                <p>작성자: ${entry.username} / ${new Date(entry.date.seconds * 1000).toLocaleString()}</p>
                 <button class="view-btn" data-id="${doc.id}">상세보기</button>
             `;
             entryElement.querySelector('.view-btn').addEventListener('click', () => {

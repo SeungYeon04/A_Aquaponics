@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             entryContent.textContent = entry.content;
         } else {
             alert('Entry not found');
-            window.location.href = 'index.html';
+            window.location.href = 'gesifan.html';
         }
     } catch (error) {
-        console.error('Error loading entry:', error);
-        alert('Error loading entry');
-        window.location.href = 'index.html';
+        console.error('로딩 에러입니다:', error);
+        alert('로딩 에러입니다.');
+        window.location.href = 'gesifan.html';
     }
 
     deleteBtn.addEventListener('click', async () => {
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (confirmDelete) {
             try {
                 await deleteDoc(doc(db, 'diaries', entryId));
-                alert('Entry deleted');
-                window.location.href = 'index.html';
+                alert('삭제 되었습니다.');
+                window.location.href = 'gesifan.html';
             } catch (error) {
                 console.error('Error deleting entry:', error);
                 alert('Error deleting entry');
