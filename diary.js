@@ -48,9 +48,9 @@ async function loadDiaries(email) {
             const entryElement = document.createElement('li');
             entryElement.innerHTML = `
                 <h3>${entry.title}</h3>
-                <p>${entry.content}</p>
+                
                 <p>${new Date(entry.date.seconds * 1000).toLocaleString()}</p>
-                <button class="view-btn" data-id="${doc.id}">크게보기</button>
+                <button class="view-btn" data-id="${doc.id}">상세보기</button>
             `;
             entryElement.querySelector('.view-btn').addEventListener('click', () => {
                 localStorage.setItem('currentEntryId', doc.id);
