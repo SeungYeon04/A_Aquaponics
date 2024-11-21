@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="font.css">
 </head>
 <body>
+    <div style="background-color: gray">
+        <div style="padding: 1%;">
+        <button onclick="location.href='index.html'" style="font-size: 16px;">메인화면</button>
+        <button onclick="location.href='gesifan.html'" style="font-size: 16px;">게시판</button>
+        <button onclick="location.href='shop.html'" style="font-size: 16px;">상품보기</button><br>
+        </div>
+        <button onclick="location.href='login.html'" style="font-size: 16px; top:2%; position: absolute; right: 1%; ">로그인</button>
+    </div>
+
     <div class="container">
         <button onclick="location.href='signup.html'">회원가입</button>
         <button onclick="location.href='index.html'" style="margin-left: 68%;">뒤로가기</button>
@@ -20,9 +29,8 @@
     </div>
     <script type="module" src="login.js"></script>
     <style>
-        body {
-            width: 100%; height: 100%;
-            margin-top: 15% ; margin-bottom: 150px;
+        .container {
+            margin-top: 10% ; margin-bottom: 150px;
         }
     </style>
 </body>

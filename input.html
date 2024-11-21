@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="font.css">
 </head>
 <body>
-    <h1>게시판 글 작성하기</h1>
+    <div style="background-color: gray">
+        <div style="padding: 1%;">
+        <button onclick="location.href='index.html'" style="font-size: 16px;">메인화면</button>
+        <button onclick="location.href='gesifan.html'" style="font-size: 16px;">게시판</button>
+        <button onclick="location.href='shop.html'" style="font-size: 16px;">상품보기</button><br>
+        </div>
+        <button onclick="location.href='login.html'" style="font-size: 16px; top:2%; position: absolute; right: 1%; ">로그인</button>
+    </div>
+    
     <div class="container">
+        <h1>게시판 글 작성하기</h1>
         <form id="diary-form">
             <input type="text" id="title" placeholder="Title" required>
             <textarea id="content" placeholder="Content" required></textarea>
@@ -17,10 +26,9 @@
     </div>
     <script src="diary.js" type="module"></script>
     <style>
-        body {
-            width: 100%; height: 100%;
-            margin-top: 15% ; margin-bottom: 150px;
-        }
+        .container { 
+            margin-top: 10% ; margin-bottom: 150px;
+        } 
     </style>
 </body>
 </html>
