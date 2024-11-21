@@ -46,7 +46,7 @@
             let index = 1; // 데이터 순서 카운트
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
-                const date = new Date(data.timestamp); // 데이터에 timestamp 필드가 있다고 가정
+                const date = data.time.toDate(); // 데이터에 timestamp 필드가 있다고 가정
                 const row = document.createElement('tr');
                 row.innerHTML = `<td>${index++}</td><td>${date.toLocaleString()}</td><td>${data.airTemperature}</td><td>${data.airHumidity}</td><td>${data.soilMoisture}</td><td>${data.waterTemperature}</td><td>${data.phLevel}</td><td>${data.dissolvedOxygen}</td>`;
                 sensorTable.appendChild(row);
